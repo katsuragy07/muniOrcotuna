@@ -1,0 +1,76 @@
+
+
+.footer-top{
+    border-top: 6px solid rgba(88, 255, 205, 0.7);
+    padding: 32px 1px;
+    padding-bottom: 8px;
+    background: rgb(0,212,255);
+    background: linear-gradient(312deg, rgba(0,212,255,1) 0%, rgba(9,28,121,1) 100%, rgba(0,212,255,1) 100%);
+}
+
+.footer-bottom{
+    color: white;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 4px 2px;
+    font-size: 0.9em;
+}
+
+
+.footer-top h5{
+    font-size: 1.1em;
+    color: white;
+    text-shadow:  0px 1px 2px black, 0px -1px 2px black;
+}
+.footer-top-links a{
+    color: white;
+    text-shadow:  0px 0px 2px black;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+.footer-top-links p{
+    color: white;
+    text-shadow:  0px 0px 2px black;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.footer-top-links a:hover{
+    color: black;
+}
+
+.quejas{
+    color: rgb(238, 182, 39);
+    font-style: italic;
+    font-weight: 600;
+}
+
+.libro{
+    text-shadow: 0px 0px 2px rgb(0, 0, 0) !important;
+    font-style: oblique;
+    font-weight: 900;
+}
+
+
+.footer-copy-1{
+    text-align: left;
+}
+.footer-copy-2{
+    text-align: right;
+}
+
+
+@media (max-width: 576px){
+    .footer-copy-1{
+        text-align: center;
+    }
+    .footer-copy-2{
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 500px){
+    .footer-link-medio{
+        text-align: center;
+    }
+}

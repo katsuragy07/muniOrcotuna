@@ -1,0 +1,62 @@
+
+<div class="cont-login">
+
+<!-- Sing in  Form -->
+<section class="sign-in">
+    <div class="container">
+        <div class="signin-content">
+            <div class="signin-image">
+                <figure><img src="assets/logo2.png" alt="sing up image"></figure>
+                <a href="/" class="signup-image-link">Volver a la Página Web</a>
+            </div>
+
+            <div class="signin-form">
+                <h2 class="form-title">Login in</h2>
+
+                <form class="register-form" accept-charset="utf-8" autocomplete="off" #loginForm="ngForm" (submit)="submit(loginForm)">
+                    <div class="form-group">
+                        <label for="user_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" placeholder="ID login" required [(ngModel)]="login.user" name="user" #user autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_password"><i class="zmdi zmdi-lock"></i></label>
+                        <input type="password" placeholder="Password" required [(ngModel)]="login.password" name="password" #password>
+                    </div>
+                    <!--
+                    <div class="form-group mb-2">
+                        <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                        <label for="remember-me" class="label-agree-term"><span><span></span></span>Recordarme</label>
+                    </div>
+                    -->
+                    <div class="form-group m-0">
+                        <div *ngIf="estado==404" class="alert alert-danger" role="alert">
+                            El usuario no existe!
+                        </div>
+                        <div *ngIf="estado==500" class="alert alert-warning" role="alert">
+                            Contraseña incorrecta!
+                        </div>
+                        <div *ngIf="estado==200" class="alert alert-success" role="alert">
+                            Logeado exitosamente. Espere...
+                        </div>
+                    </div>
+                    <div class="form-group form-button">
+                        <input type="submit" class="form-submit mt-0" value="Entrar"/>
+                    </div>
+                </form>
+
+                <!--
+                <div class="social-login">
+                    <span class="social-label">Or login with</span>
+                    <ul class="socials">
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                    </ul>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>

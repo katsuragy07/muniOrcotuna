@@ -1,0 +1,105 @@
+<app-web-nav></app-web-nav>
+
+<div class="container-fluid inicio">
+    <div class="container">
+        <div class="row" style="position: relative;">
+            <div class="col-12 bg-normas-img">
+
+            </div>
+            <div class="col-12 bg-normas-title">
+                <h3><i class="fas fa-briefcase"></i> Convocatorias</h3>
+                <br>
+                <p>Trabaja con nosotros...</p>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-12">
+                <h3 class="titulos">Lista de convocatorias</h3>
+            </div>
+
+            <div class="w-100"><br></div>
+
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Número</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">F.Publicación</th>
+                                <th scope="col">Descargar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <ng-container *ngIf="ready">
+                                <tr *ngFor="let data of convocatorias; let i = index">
+                                    <th class="text-center" scope="row">{{i+1}}</th>
+                                    <td>{{data.nombre}}</td>
+                                    <td class="text-center">{{data.fecha}}</td>
+                                    <td class="text-center">
+                                        <a *ngIf="data.url_archivo.split('.').pop()=='pdf'" [href]="URI+'upload/convocatorias/'+data.url_archivo" target="_blank" title="Descargar" style="color:red;">
+                                            <i class="fas fa-2x fa-file-pdf"></i>
+                                        </a>
+                                        <a *ngIf="data.url_archivo.split('.').pop()!='pdf'" [href]="URI+'upload/convocatorias/'+data.url_archivo" target="_blank" title="Descargar" style="color:rgb(13, 117, 253);">
+                                            <i class="fas fa-2x fa-file-word"></i>
+                                        </a>
+                                    </td>
+                                </tr>  
+                            </ng-container>
+                        
+                     
+                            <ng-container *ngIf="!ready">
+                                <tr>
+                                    <td colspan="4" class="pt-4 pb-4">
+                                        <div id="load_table" class="w-100">
+                                            <div class="text-center">
+                                                <div class="spinner-border text-primary" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-container>
+    
+                            <ng-container *ngIf="ready && convocatorias.length==0">
+                                <tr>
+                                    <td class="text-center">-</td>
+                                    <td class="text-center">No hay datos</td>
+                                    <td class="text-center">No hay datos</td>
+                                    <td class="text-center">-</td>
+                                </tr>
+                            </ng-container>
+
+                        </tbody>
+                    </table>
+
+                    <nav aria-label="Page navigation example" class="float-right">
+                        <ul class="pagination justify-content-end">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                        </li>
+                        
+                        <li *ngFor="let page of pages" class="page-item" [ngClass]="{'active': pageActive == page.pagina}" #elemPagination><a class="page-link" (click)="listar(page.pagina)" style="cursor:pointer;">{{page.pagina}}</a></li>
+        
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                        </ul>
+                    </nav>
+                    
+                </div>
+            </div>
+
+
+
+        </div>
+        
+    </div>
+    <br>
+</div>
+

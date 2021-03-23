@@ -1,0 +1,42 @@
+<div class="main-slider inicio">
+    <!-- Swiper -->
+    <div *ngIf="portadas.length > 0">
+        <div class="swiper-container swiper-container-main">
+
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let data of portadas; let i = index">
+                    <img [src]="URI+'upload/portadas/'+data.url_img" width="100%">
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Add Arrows -->
+                <div class="swiper-button-next" style="z-index: 400; padding-right: 100px;"></div>
+                <div class="swiper-button-prev" style="z-index: 400; padding-left: 100px;"></div>
+            </div>
+            
+
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <div class="cont-social">
+        <a href="https://www.facebook.com/muniorcotuna/timeline?lst=100002926163207%3A100004040054032%3A1603695235" target="_blank"><img src="assets/icons/fb.png" height="45" alt=""></a>
+        <a href="#" target="_blank"><img src="assets/icons/tw.png" height="45" alt=""></a>
+        <a href="#" target="_blank"><img src="assets/icons/in.png" height="45" alt=""></a>
+        <a href="#" target="_blank"><img src="assets/icons/yt.png" height="45" alt=""></a>
+        <a href="#" target="_blank"><img src="assets/icons/ws.png" height="45" alt=""></a>
+    </div>
+</div>
+
+
+<app-web-nav></app-web-nav>
+
+
+<app-web-section></app-web-section>
+
+<app-web-aside></app-web-aside>
+
+
+<app-web-popup></app-web-popup>

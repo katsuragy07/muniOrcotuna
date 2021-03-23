@@ -1,0 +1,306 @@
+
+<div class="container-fluid">
+    <div class="row justify-content-between">
+        <div class="col-sm-12 text-center mb-3">
+            <h3><span class="badge badge-info">TRAMITES RECHAZADOS</span></h3>
+        </div>
+        <div class="col-sm-4 col-6">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <a routerLink="/panel" class="btn btn-secondary" style="color:white; cursor:pointer;">
+                    <input type="radio" name="options" id="option2" autocomplete="off"><i class="fas fa-lg fa-arrow-alt-circle-left"></i>
+                </a>
+                <a routerLink="/panel" class="btn btn-secondary active" style="color:white; cursor:pointer;">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked><i class="fas fa-home"></i> Inicio
+                </a> 
+            </div>
+        </div>
+        <!--
+        <div class="col-sm-4 col-6">
+            <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#modal-add" (click)="resetForm(modalForm)">Añadir <i class="fas fa-plus"></i></button>
+        </div>
+        -->
+    </div>
+</div>
+
+<br>
+
+<div class="container-fluid">
+    <div class="row justify-content-end">
+
+        <div class="col-12 mb-1">
+            <form class="row" #searchForm="ngForm" (submit)="filtrar(search.value)">
+                <div class="col-md-2 col-sm-4 mb-2">
+                    <select class="form-control">
+                        <option value="EXPEDIENTE" selected>Código</option>
+                    </select>
+                </div>
+                <div class="col-md-8 col-sm-8 mb-2">
+                    <input class="form-control" placeholder="Buscar Expedientes" aria-label="Search" #search (keyup)="filtrar(search.value)">
+                </div>
+                <div class="col-md-2 col-sm-12 mb-2">
+                    <button type="submit" class="btn btn-block btn-success"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-12 mb-2">
+            <div class="table-responsive">
+                <table class="table table-sm table-bordered text-center table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="pt-2 pb-2 pl-2 pr-2" scope="col">#</th>
+                            <th scope="col">CODIGO</th>
+                            <th scope="col">ASUNTO</th>
+                            <th scope="col">DESTINATARIO</th>
+                            <th scope="col">SOLICITANTE</th>
+                            <th scope="col">AREA</th>
+                            <th scope="col">OPERACIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <ng-container *ngIf="ready">
+                            <tr *ngFor="let data of tramites; let i = index" >
+                                <td>{{((pageActive-1)*pageSize)+i+1}}</td>
+                                <td>{{data.codigo}}</td>
+                                <td>{{data.asunto}}</td>
+                                <td>{{data.destinatario}}</td>
+                                <td>{{data.solicitante}}</td>
+                                <td>{{data.nombre_area}}</td>
+                                <td>
+                                    <button style="width:140px;" type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#modal-add" (click)='detalles(data)'><i class="fas fa-file-alt"></i> Detalles</button>
+                                </td>
+                            </tr>
+                        </ng-container>
+        
+                        <ng-container *ngIf="!ready">
+                            <tr>
+                                <td colspan="7" class="pt-4 pb-4">
+                                    <div id="load_table" class="w-100">
+                                        <div class="text-center">
+                                            <div class="spinner-border text-primary" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+
+                        <ng-container *ngIf="ready && tramites.length==0">
+                            <tr>
+                                <td>-</td>
+                                <td>No hay datos</td>
+                                <td>No hay datos</td>
+                                <td>No hay datos</td>
+                                <td>No hay datos</td>
+                                <td>No hay datos</td>
+                                <td></td>
+                            </tr>
+                        </ng-container>
+                        
+                    </tbody>
+
+                </table>
+
+                
+
+            </div>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                  </li>
+                  
+                  <li *ngFor="let page of pages" class="page-item" [ngClass]="{'active': pageActive == page.pagina}" #elemPagination><a class="page-link" (click)="listar(page.pagina)" style="cursor:pointer;">{{page.pagina}}</a></li>
+
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#">Siguiente</a>
+                  </li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+<!-- MODAL ADD -->
+<!-- MODAL ADD -->
+<div class="modal fade bd-example-modal-sm" id="modal-add" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+
+
+            <div class="container-fluid modal-body" style="padding:15px;">
+                <div class="row justify-content-center"> 
+                    <div class="col-md-12">
+
+                                <button type="button" class="btn btn-danger" style="position:absolute;right:13px;padding:6px 15px;" (click)="closeForm(modalForm)"><i class="fas fa-lg fa-times"></i></button>
+                                
+                                <form #modalForm="ngForm" class="formulario-modal" enctype="multipart/form-data"  novalidate="">
+                                    <h4 *ngIf="!tramite.id" style="margin-bottom:18px;width:80%;">DETALLES DEL TRAMITE</h4>
+                                    <h4 *ngIf="tramite.id" style="margin-bottom:18px;width:80%;">DETALLES DEL TRAMITE</h4>
+                                                                        
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <a class="nav-item nav-link active" id="nav-general-tab" data-toggle="tab" href="#nav-general" role="tab" aria-controls="nav-general" aria-selected="true">General</a>
+                                        </div>
+                                    </nav>
+
+                                    <div class="row justify-content-center">   
+                                        <div class="tab-content row justify-content-center col-12" id="nav-tabContent">
+
+
+                                            <div class="col-md-9 col-12 tab-pane fade show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
+                                                <br>
+                                               
+                                                <div class="form-group row">
+                                                    <label for="inputNOM" class="col-sm-3 col-form-label">Código</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" placeholder="Número de tramite" [disabled]="!btn" [(ngModel)]="tramite.codigo" name="codigo" #codigo>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="inputNOM" class="col-sm-3 col-form-label">Documento*</label>
+                                                    <div class="col-sm-9">
+                                                        <select type="text" class="form-control" placeholder="Seleccionar" [disabled]="!btn" [(ngModel)]="tramite.doc_tipo" name="doc_tipo" #doc_tipo="ngModel" required>
+                                                            <option value="" selected disabled>---</option>
+                                                            <option value="DNI">DNI</option>
+                                                            <option value="RUC">RUC</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="inputNOM" class="col-sm-3 col-form-label">N° de Documento</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" placeholder="Número de documento" [disabled]="!btn" [(ngModel)]="tramite.doc_nro" name="doc_nro" #doc_nro>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="inputCOM" class="col-sm-3 col-form-label">Solicitante</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" placeholder="Solicitante del tramite" [disabled]="!btn" [(ngModel)]="tramite.solicitante" name="solicitante" #solicitante>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="inputCOM" class="col-sm-3 col-form-label">Teléfono</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" placeholder="Telefono del solicitante" [disabled]="!btn" [(ngModel)]="tramite.telefono" name="telefono" #telefono>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="inputCOM" class="col-sm-3 col-form-label">Email</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" placeholder="Email del solicitante" [disabled]="!btn" [(ngModel)]="tramite.email" name="email" #email>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group row">
+                                                    <label for="inputCOM" class="col-sm-3 col-form-label">Asunto</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" placeholder="Asunto" [disabled]="!btn" [(ngModel)]="tramite.asunto" name="asunto" #asunto>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="inputCOM" class="col-sm-3 col-form-label">Dirigido a</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" placeholder="Destinatario" [disabled]="!btn" [(ngModel)]="tramite.destinatario" name="destinatario" #destinatario>
+                                                    </div>
+                                                </div>
+
+                                                <h5 class="mt-4 mb-1">Documentos adjuntos:</h5>
+                                                <hr class="mt-1">
+
+                                                <div class="form-group text-center mb-2">
+                                                   <a *ngIf="tramite.url_document" [href]="URI+'upload/tramites/'+tramite.url_document" target="_blank">
+                                                       <span style="color:red;">
+                                                            <i class="fas fa-4x fa-file-pdf"></i>
+                                                       </span>
+                                                       <p>Descargar</p>
+                                                   </a>
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+                                                                                         
+
+                                    <div class="w-100" style="height:10px;"></div>
+                                    <div class="msg-ajax-result"></div>
+
+
+                                    <div class="row justify-content-around">
+                                       
+                                        <div class="col-sm-7 col-12 mb-2">
+                                            <button type="button" class="btn btn-block btn-warning btn_modals" (click)="closeForm(modalForm)"><i class="fas fa-lg fa-ban"></i> Cancelar</button>
+                                        </div>
+
+                                    </div>
+
+
+                                </form>
+                                
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Confirm-->
+<div class="modal fade" id="modal-confirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Confirmar accion</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body" *ngIf="action==1">
+                ¿Esta seguro que desea aprobar el tramite?
+            </div>
+            <div class="modal-body" *ngIf="action==2">
+                ¿Esta seguro que desea desaprobar el tramite?
+            </div>
+            <div class="modal-footer p-1">
+                <div class="row w-100">
+                    <div class="col-sm-6">
+
+                        <ng-container *ngIf="action==1">
+                            <button *ngIf="btn" type="button" class="btn btn-block btn-success m-1" (click)='aprobar({})'>Si</button>
+                            <button *ngIf="!btn" type="button" class="btn btn-block btn-success m-1" (click)='aprobar({})' disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando</button>
+                        </ng-container>
+
+                        <ng-container *ngIf="action==2">
+                            <button *ngIf="btn" type="button" class="btn btn-block btn-danger m-1" (click)='desaprobar({})'>Si</button>
+                            <button *ngIf="!btn" type="button" class="btn btn-block btn-danger m-1" (click)='desaprobar({})' disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando</button>
+                        </ng-container>
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-block btn-secondary m-1" (click)="closeConfirm()" [disabled]="!btn">No</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>

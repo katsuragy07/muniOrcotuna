@@ -1,0 +1,8 @@
+
+.content-wrapper{
+    background: url(../../assets/panel/index.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: black;
+}

@@ -1,0 +1,145 @@
+
+section{
+    padding-top: 30px;
+    padding-bottom: 20px;
+    background: rgb(238, 238, 238);
+}
+
+
+.section-menu{
+    display: block;
+    width: 100%;
+    height: 120px;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid rgba(204, 204, 204, 0.6);
+    transition: all 0.4s ease 0s;
+    color: rgb(146, 10, 0);
+    text-shadow: 0px 0px 1px rgba(255, 141, 33, 0.61);
+    font-weight: 900;
+}
+.section-menu:hover{
+    background: rgb(32, 116, 32);
+    transform: scale(1.02);
+    text-decoration: none;
+    border-radius: 4px;
+    color: white;
+}
+.section-menu > span{
+    text-align: center;
+    display: block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.section-menu > span p{
+    margin-top: 5px;
+    line-height: 1.1em;
+}
+
+
+
+.section-noticias > div{
+    padding: 12px 12px;
+    padding-bottom: 18px;
+    background: rgb(23,102,0);
+    background: linear-gradient(45deg, rgba(23,102,0,1) 0%, rgba(26,156,8,1) 43%, rgba(42,211,255,1) 100%);
+}
+.section-noticias > div span{
+    color: rgb(235, 235, 235);
+    font-style: italic;
+}
+.section-noticias > div h5{
+    color: white;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 18px;
+}
+.section-noticias > div a{
+    color: black;
+    padding: 4px 30px;
+    background: rgb(0, 68, 146) !important;
+    border: 1px solid green;
+    color: white;
+    font-weight: 600;
+}
+.section-noticias > div a:hover{
+    background: rgb(0, 152, 190) !important;
+    transform: scale(1.03);
+}
+
+
+.swiper-container-section-2{
+    height: 94%;
+}
+.section-anuncios{
+    text-align: center;
+    height: 400px !important; 
+    overflow: hidden;
+}
+.section-anuncios img{
+    height: 100%;
+    width: auto;
+ 
+}
+
+
+.contenido-alcalde .alcalde-img img{
+    border-radius: 8px;
+    box-shadow: 0px 0px 6px black;
+}
+
+.contenido-alcalde .alcalde-des .alert{
+    padding: 0px;
+    background: rgb(0, 95, 204);
+    border-radius: 30px 0px 30px 0px;
+}
+.contenido-alcalde .alcalde-des .alert span{
+    display: block;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    margin-left: -20px;
+    top: 40%;
+    transform: translateY(-50%);
+    border-top: 14px solid transparent;
+    border-right: 16px solid rgb(0, 95, 204);
+    border-bottom: 14px solid transparent;
+}
+.contenido-alcalde .alcalde-des .alert div{
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 14px 35px;
+    color: white !important;
+    text-shadow: 1px 1px 3px black;
+}
+
+@media (max-width: 575px){
+	.contenido-alcalde .alcalde-des .alert span{
+        margin-left: 0px;
+        margin-top: -29px;
+        top: 0px;
+        left: 40%;
+        transform: translateX(-50%);
+        border-left: 14px solid transparent;
+        border-bottom: 16px solid rgb(0, 68, 146);
+        border-right: 14px solid transparent;
+    }
+}
+
+
+
+
+
+.titulos{
+    color: rgb(253, 167, 8);
+    padding-left: 10px;
+    border-left: 7px solid rgb(255, 72, 0);
+    border-bottom: 1px solid rgba(255, 17, 17, 0.8);
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.671);
+    text-transform: uppercase;
+    font-weight: 700;
+}

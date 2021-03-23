@@ -1,0 +1,163 @@
+<app-web-nav></app-web-nav>
+
+<div class="container-fluid inicio">
+    <div class="container">
+        <div class="row" style="position: relative;">
+            <div class="col-12 bg-normas-img">
+
+            </div>
+            <div class="col-12 bg-normas-title">
+                <h3><i class="fas fa-book"></i> Resoluciones institucionales</h3>
+                <br>
+                <p>Resoluciones, acuerdos, decretos, ordenanzas...</p>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h3 class="titulos">Buscar <img class="icon pb-1" src="assets/icons/icon01.png"  width="35" alt=""></h3>
+            </div>
+
+            <div class="col-12">
+                <form class="row" #searchForm="ngForm" (submit)="filtrar(search_tipo.value,search_year.value,search_mes.value,search_ref.value)">
+                    <div class="col-lg-2 col-md-4 col-11 mt-2">
+                        <label for="formGroupExampleInput">Tipo</label>
+                        <select class="form-control form-control-sm" placeholder="First name" #search_tipo>
+                            <option value="0" selected >Todo</option>
+                            <option value="1">Resolución de alcaldía</option>
+                            <option value="2">Acuerdo de Concejo</option>
+                            <option value="3">Ordenanzas Municipales</option>
+                            <option value="4">Decretos de alcaldía</option>
+                            <option value="5">Convenios Municipales</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-11 mt-2">
+                        <label for="formGroupExampleInput">Año</label>
+                        <input type="number" class="form-control form-control-sm" min="1900" max="2099" step="1" value="2021" #search_year>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-11 mt-2">
+                        <label for="formGroupExampleInput">Mes</label>
+                        <select type="text" class="form-control form-control-sm" #search_mes>
+                            <option value="0" selected>Todo</option>
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero</option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Setiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4 col-md-7 col-11 mt-2">
+                        <label for="formGroupExampleInput">Referencia</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="Buscar Resoluciones" aria-label="Search" #search_ref>
+                    </div>
+                    <div class="col-lg-2 col-md-5 col-11 mt-2">
+                        <label for="formGroupExampleInput" style="visibility: hidden;">.</label>
+                        <button class="btn btn-block btn-primary btn-sm" type="submit">Buscar <i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            
+
+            <div class="w-100"><br></div>
+
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Número</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">F.Emisión</th>
+                                <th scope="col">Descargar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    
+
+                            <ng-container *ngIf="ready">
+                                <tr *ngFor="let data of resoluciones; let i = index">
+                                    <th class="text-center" scope="row">{{i+1}}</th>
+                                    <td>
+                                        <span *ngIf="data.tipo==1">Resolución de alcaldía</span>
+                                        <span *ngIf="data.tipo==2">Acuerdo de Concejo</span>
+                                        <span *ngIf="data.tipo==3">Ordenanzas Municipales</span>
+                                        <span *ngIf="data.tipo==4">Decretos de alcaldía</span>
+                                        <span *ngIf="data.tipo==5">Convenios Municipales</span>
+                                    </td>
+                                    <td>{{data.nombre}}</td>
+                                    <td class="text-center" style="min-width: 100px;">{{data.fecha}}</td>
+                                    <td class="text-center">
+                                        <a *ngIf="data.url_archivo.split('.').pop()=='pdf'" [href]="URI+'upload/resoluciones/'+data.url_archivo" target="_blank" title="Descargar" style="color:red;">
+                                            <i class="fas fa-2x fa-file-pdf"></i>
+                                        </a>
+                                        <a *ngIf="data.url_archivo.split('.').pop()!='pdf'" [href]="URI+'upload/resoluciones/'+data.url_archivo" target="_blank" title="Descargar" style="color:rgb(13, 117, 253);">
+                                            <i class="fas fa-2x fa-file-word"></i>
+                                        </a>
+                                    </td>
+                                </tr>  
+                            </ng-container>
+                        
+                     
+                            <ng-container *ngIf="!ready">
+                                <tr>
+                                    <td colspan="4" class="pt-4 pb-4">
+                                        <div id="load_table" class="w-100">
+                                            <div class="text-center">
+                                                <div class="spinner-border text-primary" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-container>
+    
+                            <ng-container *ngIf="ready && resoluciones.length==0">
+                                <tr>
+                                    <td class="text-center">-</td>
+                                    <td class="text-center">No hay datos</td>
+                                    <td class="text-center">No hay datos</td>
+                                    <td class="text-center">No hay datos</td>
+                                    <td class="text-center">-</td>
+                                </tr>
+                            </ng-container>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <nav aria-label="Page navigation example" class="float-right">
+                    <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                    </li>
+                    
+                    <li *ngFor="let page of pages" class="page-item" [ngClass]="{'active': pageActive == page.pagina}" #elemPagination><a class="page-link" (click)="listar(page.pagina)" style="cursor:pointer;">{{page.pagina}}</a></li>
+    
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Siguiente</a>
+                    </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+        
+    </div>
+    <br>
+</div>
+
+
+

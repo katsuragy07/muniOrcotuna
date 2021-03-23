@@ -1,0 +1,48 @@
+
+header{
+    /*
+    background: url(../img/bg01.png) repeat;
+    background-position: center;
+    */
+    background: white;
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: center;
+}
+
+.header-cont{
+    color: white;
+    padding: 5px 10px;
+}
+
+
+.align-v{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.align-h{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.align-c{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+
+@media (max-width: 576px){
+    .header-main-logo-1{
+        width: 100%;
+        height: auto;
+    }
+    .header-main-logo-2{
+        width: 100%;
+        height: auto;
+    }
+}
+

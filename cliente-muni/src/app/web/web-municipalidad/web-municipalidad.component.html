@@ -1,0 +1,45 @@
+<app-web-nav></app-web-nav>
+
+<div class="container-fluid inicio">
+    <div class="container">
+
+        <div class="row" style="position: relative;">
+            <div class="col-12 bg-normas-img">
+
+            </div>
+            <div class="col-12 bg-normas-title">
+                <h3><i class="fas fa-book"></i> Orcotuna</h3>
+                <br>
+                <p>Juntos una sola fuerza</p>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row mt-2">
+            <div class="col-md-4 mb-5">
+                <div class="menu-navegacion">
+                    <div class="menu-navegacion-titulo text-uppercase">Menu de opciones</div>
+                    <a routerLink="/municipalidad" class="menu-navegacion-items"><i class="fas fa-folder"></i>&nbsp; Alcalde</a>
+                    <a class="menu-navegacion-items"><i class="fas fa-folder"></i>&nbsp; Regidores</a>
+                    <a routerLink="/municipalidad/funcionarios" class="menu-navegacion-items"><i class="fas fa-folder"></i>&nbsp; Funcionarios</a>
+                    <a class="menu-navegacion-items"><i class="fas fa-folder"></i>&nbsp; Misión y visión</a>
+                    <a class="menu-navegacion-items"><i class="fas fa-folder"></i>&nbsp; Organigrama Municipal</a>
+                </div>
+            </div>
+            <div class="col-md-8 mb-3 text-center municipalidad">
+                <h3 class="titulos">
+                    {{general.alcalde}}
+                </h3>
+                <br>
+                <img class="alcalde-img" [src]="URI+'upload/general/'+general.url_img" width="400">
+                <br>
+                <br>
+                <h5><i class="fas fa-landmark"></i> Alcalde Distrital de Orcotuna</h5>
+                <h5><i class="far fa-calendar-alt"></i> 2019 - 2022</h5>
+            </div>
+        </div>
+
+    </div>
+    <br>
+</div>

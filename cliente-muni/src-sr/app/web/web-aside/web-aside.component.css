@@ -1,0 +1,61 @@
+
+aside{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: rgb(241, 241, 241);
+}
+
+
+.aside-enlaces{
+    display: block;
+    width: 100%;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px dashed gray;
+    background: white;
+    color: rgb(68, 68, 68);
+}
+.aside-enlaces:hover{
+    background: rgb(25, 163, 25);
+    text-decoration: none;
+    color: white !important;
+}
+
+
+.form-normas{
+    padding: 0px 5px;
+}
+
+.form-normas label{
+    font-size: 0.8em;
+    font-weight: 600;
+}
+.form-normas > a{
+    margin-top: 3px;
+    float: left;
+    padding: 2px 30px;
+    font-weight: 600;
+}
+.form-normas input{
+    font-size: 0.9em;
+}
+.form-normas select{
+    font-size: 0.9em;
+}
+
+
+
+.titulos{
+    color: rgb(70, 5, 131);
+    padding-left: 10px;
+    border-left: 7px solid rgb(40, 165, 60);
+    border-bottom: 1px solid rgba(70, 5, 131, 0.8);
+}
+
+
+@media (max-width: 500px){
+    .form-normas{
+        padding: 0px 10px;
+    }
+}

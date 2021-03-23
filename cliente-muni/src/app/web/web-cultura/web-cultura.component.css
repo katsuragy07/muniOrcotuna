@@ -1,0 +1,48 @@
+.container-fluid{
+    background: rgb(238, 238, 238);
+}
+
+.container{
+    background: white;
+}
+
+
+.bg-normas-img{
+    height: 200px;
+    background: url(../../../assets/web/bg-municipalidad.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-normas-title{
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: -2px;
+}
+
+
+.bg-normas-title h3{
+    color: white;
+   display: inline-block;
+    background: rgba(137, 43, 226, 0.6);
+    margin: 0px;
+    padding: 6px 12px;
+}
+.bg-normas-title p{
+    color: white;   
+    display: inline-block;
+    background: rgba(38, 18, 150, 0.85);
+    margin: 0px;
+    padding: 3px 12px;
+    padding-left: 18px;
+    font-size: 0.9em;
+}
+
+
+.align-v{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

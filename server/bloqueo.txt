@@ -1,0 +1,8 @@
+https://muniorcotuna.com/server/panel/ajax_load_edit.php
+SERIAL: WFkZeLn25twPXU3thnyU
+COD AUTORIZATION: Ueryw3wQukTbKSU37ghz
+
+
+action: enabled/disabled
+authorization:
+serial:

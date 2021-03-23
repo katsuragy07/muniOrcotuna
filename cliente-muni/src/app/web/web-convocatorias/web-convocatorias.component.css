@@ -1,0 +1,93 @@
+.container-fluid{
+    background: rgb(238, 238, 238);
+}
+
+.container{
+    background: white;
+}
+
+.bg-normas-img{
+    height: 200px;
+    background: url(../../../assets/web/bg-convocatorias.png);
+    background-size: cover;
+    background-position: center top;
+}
+
+.bg-normas-title{
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: -2px;
+}
+
+
+.bg-normas-title h3{
+    color: white;
+   display: inline-block;
+    background: rgba(137, 43, 226, 0.6);
+    margin: 0px;
+    padding: 6px 12px;
+}
+.bg-normas-title p{
+    color: white;   
+    display: inline-block;
+    background: rgba(38, 18, 150, 0.85);
+    margin: 0px;
+    padding: 3px 12px;
+    padding-left: 18px;
+    font-size: 0.9em;
+}
+
+
+table{
+    border-radius: 6px;
+    overflow: hidden;
+}
+table thead{
+    background: rgb(233, 233, 233);
+}
+
+table thead tr th{
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+table tbody{
+    
+}
+
+table tbody tr{
+    font-size: 0.8em;
+    border-left: 1px solid black;
+}
+table tbody tr a{
+    color: rgb(230, 0, 0);
+}
+
+
+
+
+
+.titulos{
+    color: rgb(124, 46, 0);
+    padding-left: 10px;
+    font-weight: 700;
+    border-left: 7px solid rgb(255, 174, 108);
+    border-bottom: 2px solid rgba(252, 127, 44, 0.9);
+}
+
+
+
+
+@media (max-width: 760px){
+    .inicio{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .inicio > .container{
+        max-width: 100% !important;
+    }
+}

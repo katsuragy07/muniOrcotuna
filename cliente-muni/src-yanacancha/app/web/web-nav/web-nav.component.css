@@ -1,0 +1,120 @@
+
+
+nav{
+    display: block;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    margin-top: -24px;
+    
+}
+
+
+nav .nav-menu{
+    cursor: pointer;
+    background: rgb(39,126,23);
+    background: linear-gradient(0deg, rgba(39,126,23,1) 0%, rgba(33,174,75,1) 50%, rgba(69,177,26,1) 100%);
+    text-decoration: none;
+    padding: 12px 10px;
+    color: white;
+    text-shadow: 0px 0px 3px black;
+    font-weight: 600;
+    font-size: 1em;
+    border-left: 0.4px solid rgba(189, 189, 189, 0.4);
+  
+}
+
+nav .nav-menu:nth-child(1){
+    border-radius: 5px 0px 0px 5px;
+    border-left: none;
+}
+nav .nav-menu:nth-child(5){
+    border-radius: 0px 5px 5px 0px;
+}
+nav .nav-menu:hover{
+    background: rgb(29, 146, 241);
+    box-shadow: none;
+    border-bottom: 4px solid rgb(18, 80, 194);
+    margin-bottom: -4px;
+}
+
+
+.menu-desktop{
+    display: block;
+    font-weight: 600;
+    font-size: 1em;
+    box-shadow: 0px 3.5px 2px rgba(45, 211, 72, 0.5);
+}
+.menu-mobil{
+    display: none;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.menu-mobil-main{
+    display: block;
+    position: relative;
+    cursor: pointer;
+    background: green;
+    padding: 10px 10px;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+    border-bottom: 3px solid rgb(15, 100, 197);
+}
+.menu-mobil-main .col-12 span{
+    position: absolute;
+    display: block;
+    font-weight: 900;
+}
+
+.menu-mobil-items{
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+.menu-mobil-items .col-12{
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+    background: rgb(0, 68, 146);
+    color: white;
+    font-weight: 500;
+    padding: 8px 24px;
+}
+.menu-mobil-items .col-12:hover{
+    background: rgb(25, 130, 216);
+}
+
+
+
+@media (max-width: 992px){
+    nav .nav-menu{
+        font-size: 0.8em;
+    }
+}
+
+
+@media (max-width: 840px){
+    nav .nav-menu span{
+        display: none;
+    }
+}
+
+@media (max-width: 770px){
+    .menu-desktop{
+        display: none;
+    }
+    .menu-mobil{
+        display: block;
+    }
+}
+
+
+@media (max-width: 650px){
+    .menu-mobil-main{
+        font-size: 0.8em;
+    }
+}
+

@@ -1,0 +1,268 @@
+
+
+<div class="container-fluid">
+    <div class="row justify-content-between">
+        <div class="col-sm-12 text-center mb-3">
+            <h3><span class="badge badge-info">ADMINISTRACIÓN DE LAS PORTADAS</span></h3>
+        </div>
+        <div class="col-sm-4 col-6">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <a routerLink="/panel" class="btn btn-secondary" style="color:white; cursor:pointer;">
+                    <input type="radio" name="options" id="option2" autocomplete="off"><i class="fas fa-lg fa-arrow-alt-circle-left"></i>
+                </a>
+                <a routerLink="/panel" class="btn btn-secondary active" style="color:white; cursor:pointer;">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked><i class="fas fa-home"></i> Inicio
+                </a> 
+            </div>
+        </div>
+        <div class="col-sm-4 col-6">
+            <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#modal-add" (click)="resetForm(modalForm)">Añadir <i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container-fluid">
+    <div class="row justify-content-end">
+
+        <div class="col-12 mb-1">
+            <form class="row" #searchForm="ngForm" (submit)="filtrar(search.value)">
+                <div class="col-md-2 col-sm-4 mb-2">
+                    <select class="form-control">
+                        <option value="NOMBRE" selected>NOMBRE</option>
+                    </select>
+                </div>
+                <div class="col-md-8 col-sm-8 mb-2">
+                    <input class="form-control" placeholder="Buscar Portadas" aria-label="Search" #search (keyup)="filtrar(search.value)">
+                </div>
+                <div class="col-md-2 col-sm-12 mb-2">
+                    <button type="submit" class="btn btn-block btn-success"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-12 mb-2">
+            <div class="table-responsive">
+                <table class="table table-sm table-bordered text-center table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="pt-2 pb-2 pl-2 pr-2" scope="col">#</th>
+                            <th scope="col">PREVISUALIZACIÓN</th>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">OPERACIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <ng-container *ngIf="ready">
+                            <tr *ngFor="let data of portadas; let i = index" >
+                                <td>{{((pageActive-1)*pageSize)+i+1}}</td>
+                                <td><img height="80" [src]=" data.url_img ? URI+'upload/portadas/'+data.url_img : 'assets/panel/gallery.png'"></td>
+                                <td>{{data.nombre}}</td>
+                                <td>
+                                    <button style="width:140px;" type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#modal-add" (click)='edit(data)'><i class="fas fa-edit"></i> Modificar</button>
+                                    <button style="width:140px;" type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#modal-confirm" (click)='eliminar(data)'><i class="fas fa-times-circle"></i> Eliminar</button>
+                                </td>
+                            </tr>
+                        </ng-container>
+        
+                        <ng-container *ngIf="!ready">
+                            <tr>
+                                <td colspan="5" class="pt-4 pb-4">
+                                    <div id="load_table" class="w-100">
+                                        <div class="text-center">
+                                            <div class="spinner-border text-primary" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+
+                        <ng-container *ngIf="ready && portadas.length==0">
+                            <tr>
+                                <td>-</td>
+                                <td>No hay datos</td>
+                                <td>No hay datos</td>
+                                <td>No hay datos</td>
+                            </tr>
+                        </ng-container>
+
+                    </tbody>
+
+                </table>
+
+                
+
+            </div>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                  </li>
+                  
+                  <li *ngFor="let page of pages" class="page-item" [ngClass]="{'active': pageActive == page.pagina}" #elemPagination><a class="page-link" (click)="listar(page.pagina)" style="cursor:pointer;">{{page.pagina}}</a></li>
+
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#">Siguiente</a>
+                  </li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+<!-- MODAL ADD -->
+<!-- MODAL ADD -->
+<div class="modal fade bd-example-modal-sm" id="modal-add" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+
+
+            <div class="container-fluid modal-body" style="padding:15px;">
+                <div class="row justify-content-center"> 
+                    <div class="col-md-12">
+
+                                <button type="button" class="btn btn-danger" style="position:absolute;right:13px;padding:6px 15px;" (click)="closeForm(modalForm)"><i class="fas fa-lg fa-times"></i></button>
+                                
+                                <form #modalForm="ngForm" class="formulario-modal" enctype="multipart/form-data" (submit)="submit(modalForm)" novalidate="">
+                                    <h4 *ngIf="!portada.id" style="margin-bottom:18px;width:80%;">REGISTRAR PORTADA</h4>
+                                    <h4 *ngIf="portada.id" style="margin-bottom:18px;width:80%;">MODIFICAR PORTADA</h4>
+                                                                        
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <a class="nav-item nav-link active" id="nav-general-tab" data-toggle="tab" href="#nav-general" role="tab" aria-controls="nav-general" aria-selected="true">General</a>
+                                        </div>
+                                    </nav>
+
+                                    <div class="row justify-content-center">   
+                                        <div class="tab-content row justify-content-center col-12" id="nav-tabContent">
+
+
+                                            <div class="col-md-9 col-12 tab-pane fade show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
+                                                <br>
+                                                <div class="row justify-content-center">
+                                                    <div class="col-12 text-center">
+                                                        <div class="modal_foto_imagen" (click)="inputIMG.click()">
+                                                            <input type="file" id="input-file-modal" class="d-none" (change)="seleccionFoto($event)" [disabled]="!btn" #inputIMG> 
+                                                            <img [src]="photoSelected || 'assets/panel/gallery.png'" width="100%">
+                                                        </div> 
+
+                                                    </div>
+                                                </div>
+
+                                                <br>
+                                               
+                                                <div class="form-group row">
+                                                    <label for="inputNOM" class="col-sm-3 col-form-label">Nombre*</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" [ngClass]="{'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched)}" placeholder="Nombre de la portada" [disabled]="!btn" [(ngModel)]="portada.nombre" name="nombre" #nombre="ngModel" required>
+                                                        
+                                                        
+                                                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="invalid-feedback">
+                                                            <div *ngIf="nombre.errors.required">
+                                                                Necesitas completar este campo.
+                                                            </div>
+                                                            <div *ngIf="nombre.errors.minlength">
+                                                                Name must be at least 4 characters long.
+                                                            </div>
+                                                            <div *ngIf="nombre.errors.forbiddenName">
+                                                                Name cannot be Bob.
+                                                            </div>
+                                                        </div>
+                                                        
+
+                                                    </div>
+                                                </div>
+
+                                                <!--
+                                                <div class="form-group row">
+                                                    <label for="inputNOM" class="col-sm-3 col-form-label">Titular</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" placeholder="Titulo de como se mostrará en la página" [disabled]="!btn" [(ngModel)]="portada.titulo" name="titulo" #titulo>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="inputCOM" class="col-sm-3 col-form-label">Descripción</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea type="text" class="form-control" placeholder="Descripción de la portada" rows="5" [disabled]="!btn" [(ngModel)]="portada.descripcion" name="descripcion" #descripcion></textarea>
+                                                    </div>
+                                                </div>
+                                                -->
+                                                
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+                                                                                         
+
+                                    <div class="w-100" style="height:8px;"></div>
+                                    <div class="msg-ajax-result"></div>
+
+
+                                    <div class="row justify-content-around">
+                                        <div class="col-sm-5 col-12 mb-2">
+                                            <button *ngIf="btn" type="submit" class="btn btn-block btn-success btn_modals" [disabled]="!modalForm.form.valid"><i class="far fa-lg fa-save"></i> Guardar</button>
+                                            <button *ngIf="!btn" type="button" class="btn btn-block btn-success btn_modals" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando</button>
+                                        </div>
+                                        <div class="col-sm-4 col-12 mb-2 modal-btn-cont d-none">
+                                           
+                                        </div>
+                                        <div class="col-sm-5 col-12 mb-2">
+                                            <button type="button" class="btn btn-block btn-warning btn_modals" (click)="closeForm(modalForm)"><i class="fas fa-lg fa-ban"></i> Cancelar</button>
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                                
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Confirm-->
+<div class="modal fade" id="modal-confirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Confirmar accion</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                ¿Esta seguro que desea eliminar el elemento?
+            </div>
+            <div class="modal-footer p-1">
+                <div class="row w-100">
+                    <div class="col-sm-6">
+                        <button *ngIf="btn" type="button" class="btn btn-block btn-danger m-1" (click)='eliminar({})'>Si</button>
+                        <button *ngIf="!btn" type="button" class="btn btn-block btn-danger m-1" (click)='eliminar({})'  disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-block btn-secondary m-1" (click)="closeConfirm()" [disabled]="!btn">No</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>

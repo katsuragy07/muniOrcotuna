@@ -1,0 +1,25 @@
+.container-fluid{
+    background: rgb(238, 238, 238);
+}
+
+.container{
+    background: white;
+}
+
+iframe{
+    width: 100%;
+    min-height: 2000px;
+    margin-top: 25px;
+}
+
+
+@media (max-width: 760px){
+    .inicio{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .inicio > .container{
+        max-width: 100% !important;
+    }
+}

@@ -1,0 +1,14 @@
+nav{
+    background: rgb(245, 132, 26);
+}
+
+nav ul li > a{
+    color: white;
+    font-weight: 600;
+}
+
+
+.cerrar-sesion:hover{
+    transform: scale(1.05);
+    text-decoration: underline;
+}

@@ -1,0 +1,120 @@
+.inicio{
+    position: relative;
+}
+
+.swiper-container{
+    overflow: hidden;
+    z-index: 200;
+}
+
+
+
+.swiper-header{
+    position: relative;
+    width: 100%;
+    top: 20%;
+    padding-right: 18%;
+}
+.swiper-header > h2{
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 2px black;
+    font-style: oblique;
+}
+.swiper-header > h5{
+    margin-top: 20px;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    line-height: 1.5em;
+    text-shadow: 0px 0px 2px black;
+}
+
+
+
+
+.cont-social{
+    position: fixed;
+    right: 0px;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 1300;
+    width: 70px;
+}
+
+.cont-social > a{
+    float: right;
+    width: 100%;
+    display: block;
+    margin-right: 3px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    transition: all 0.3s ease 0s;
+}
+.cont-social > a > img{
+    float: right;
+    border-radius: 100%;
+    box-shadow: 0px 0px 2px black;
+}
+
+.cont-social > a:hover{
+    transform: scale(1.05);
+}
+
+
+
+@media (max-width: 990px){
+    .swiper-header > h2{
+        font-weight: 700;
+        font-size: 1.5em;
+    }
+    .swiper-header > h5{
+        font-size: 1.1em;
+        line-height: 1.2em;
+    }
+}
+
+
+@media (max-width: 770px){
+    .swiper-header > h2{
+        font-weight: 700;
+        font-size: 1.5em;
+    }
+    .swiper-header{
+        padding-right: 0px;
+    }
+    .swiper-header > h5{
+        font-size: 1.1em;
+        line-height: 1.2em;
+    }
+}
+
+@media (max-width: 620px){
+    .swiper-header{
+        padding-right: 0px;
+    }
+
+    .swiper-header > h2{
+        font-weight: 700;
+        font-size: 1.3em;
+    }
+    .swiper-header > h5{
+        font-size: 1em;
+        line-height: 1.1em;
+    }
+}
+
+@media (max-width: 510px){
+    .swiper-header{
+        padding-right: 0px;
+    }
+
+    .swiper-header > h2{
+        font-weight: 700;
+        font-size: 1.3em;
+    }
+    .swiper-header > h5{
+        display: none;
+    }
+}

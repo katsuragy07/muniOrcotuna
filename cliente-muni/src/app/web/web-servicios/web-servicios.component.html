@@ -1,0 +1,219 @@
+<app-web-nav></app-web-nav>
+
+
+
+<div class="container-fluid inicio">
+    <div class="container">
+
+        <div class="row" style="position: relative;">
+            <div class="col-12 bg-normas-img">
+
+            </div>
+            <div class="col-12 bg-normas-title">
+                <h3><i class="fas fa-laptop-house"></i> Servicios en Línea</h3>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row mt-2">
+            <div class="col-md-4 mb-5">
+                <div class="menu-navegacion">
+                    <div class="menu-navegacion-titulo text-uppercase">Menu de opciones</div>
+                    <a routerLink="/servicios" class="menu-navegacion-items"><i class="fas fa-folder"></i>&nbsp; Mesa de partes</a>
+                    <a routerLink="/servicios/expediente" class="menu-navegacion-items"><i class="fas fa-folder"></i>&nbsp; Consulta de expediente</a>
+                </div>
+            </div>
+            <div class="col-md-8 mb-3 servicios">
+
+                <div class="row">
+                    <div class="col-12 servicios-bg-1">
+                        <img src="../../../assets/logo.png" width="120">
+                    </div>
+                    <div class="col-12 servicios-bg-2 text-center text-white">
+                        <i class="fas fa-6x fa-desktop"></i>
+                        <h5 class="text-uppercase mt-3 mb-0 text-white">Mesa de partes virtual</h5>
+                    </div>
+                </div>
+
+
+                <div class="container">
+                    <div class="row" style="box-shadow: 0px 1px 2px grey;">
+                        <div class="col-12">
+                            <h5 class="text-uppercase mt-3 mb-3 text-center">PROCEDIMIENTO</h5>
+                            <p>
+                                Ante la emergencia sanitaria dispuesta por el gobierno peruano, la Municipalidad Distrital de Orcotuna pone a disposición de la población la mesa de partes virtual. Para su uso complete todos los datos que se le solicitan a continuación de acuerdo a lo que este solicitando.
+                            </p>
+    
+                            <form #tramiteForm="ngForm"  novalidate="">
+                                <div class="form-row justify-content-center">
+
+                                    <div class="form-group col-12 mb-1 text-center">
+                                        <label style="font-size: 0.8em;">Tipo de documento</label>
+                                    </div>
+                                    <div class="form-group col-md-4 col-sm-4 col-4 text-center">       
+                                        <select class="form-control form-control-sm" placeholder="Selecciona una opción" [ngClass]="{'is-invalid': doc_tipo.invalid && (doc_tipo.dirty || doc_tipo.touched)}" [disabled]="!btn" required [(ngModel)]="expediente.doc_tipo" name="doc_tipo" #doc_tipo="ngModel">
+                                            <option value="" selected disabled>Tipo</option>
+                                            <option value="DNI">DNI</option>
+                                            <option value="RUC">RUC</option>
+                                        </select>
+                                        <div *ngIf="doc_tipo.invalid && (doc_tipo.dirty || doc_tipo.touched)" class="invalid-feedback">
+                                            <div *ngIf="doc_tipo.errors.required">
+                                                Necesitas completar este campo.
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                    <div class="form-group col-md-6 col-sm-4 col-6 text-center">
+                                        <input type="text" class="form-control form-control-sm" [ngClass]="{'is-invalid': doc_nro.invalid && (doc_nro.dirty || doc_nro.touched)}" placeholder="Nro. de documento" [disabled]="!btn" [(ngModel)]="expediente.doc_nro" name="doc_nro" #doc_nro="ngModel" required minlength="8">
+                                        <div *ngIf="doc_nro.invalid && (doc_nro.dirty || doc_nro.touched)" class="invalid-feedback">
+                                            <div *ngIf="doc_nro.errors.required">
+                                                Necesitas completar este campo.
+                                            </div>
+                                            <div *ngIf="doc_nro.errors.minlength">
+                                                Número de documento invalido.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-10 col-sm-8 col-10 mb-2 text-center">
+                                        <div class="input-group form-control-sm mb-2 pl-0 pr-0">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text font-weight-bold" style="font-size: 0.9em;">Interesado</div>
+                                            </div>
+                                            <input type="text" class="form-control form-control-sm" [ngClass]="{'is-invalid': solicitante.invalid && (solicitante.dirty || solicitante.touched)}" placeholder="Nombres / Razón social" [disabled]="!btn" required [(ngModel)]="expediente.solicitante" name="solicitante" #solicitante="ngModel">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-10 col-sm-8 col-10 mb-2 text-center">
+                                        <div class="input-group form-control-sm mb-2 pl-0 pr-0">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text font-weight-bold" style="font-size: 0.9em;"><i class="fas fa-phone"></i></div>
+                                            </div>
+                                            <input type="text" class="form-control form-control-sm" [ngClass]="{'is-invalid': telefono.invalid && (telefono.dirty || telefono.touched)}" placeholder="Número de teléfono o celular" [disabled]="!btn" required [(ngModel)]="expediente.telefono" name="telefono" #telefono="ngModel">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-10 col-sm-8 col-10 mb-2 text-center">
+                                        <div class="input-group form-control-sm mb-2 pl-0 pr-0">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text font-weight-bold" style="font-size: 0.9em;"><i class="fas fa-envelope"></i></div>
+                                            </div>
+                                            <input type="email" class="form-control form-control-sm" placeholder="Correo electrónico" [disabled]="!btn" [(ngModel)]="expediente.email" name="email" #email="ngModel">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-10 col-sm-8 col-10 mb-2 text-center">
+                                        <div class="input-group form-control-sm mb-2 pl-0 pr-0">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text font-weight-bold" style="font-size: 0.9em;">Asunto</div>
+                                            </div>
+                                            <input type="text" class="form-control form-control-sm" [ngClass]="{'is-invalid': asunto.invalid && (asunto.dirty || asunto.touched)}" placeholder="Motivo del trámite" [disabled]="!btn" required [(ngModel)]="expediente.asunto" name="asunto" #asunto="ngModel">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-10 col-sm-8 col-10 mb-3 text-center">
+                                        <div class="input-group form-control-sm mb-2 pl-0 pr-0">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text font-weight-bold" style="font-size: 0.9em;">Área / Oficina</div>
+                                            </div>
+                                            <input type="text" class="form-control form-control-sm" [ngClass]="{'is-invalid': destinatario.invalid && (destinatario.dirty || destinatario.touched)}" placeholder="A donde se dirige el documento" [disabled]="!btn" required [(ngModel)]="expediente.destinatario" name="destinatario" #destinatario="ngModel">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group col-md-10 col-sm-8 col-10 mb-2 text-center">
+                                        <h5>Seleccione su documento a enviar</h5>
+                                        <div class="custom-file d-block">                                            
+                                            <label class="upload-drop-zone w-100 float-left mb-1 p-2 area_upload" (click)="inputFILE.click()">
+                                                <!--<img src="./../../../assets/logo2.png" height="150"> -->
+
+                                                <span *ngIf="!fileExtension" style="line-height: 200px;">Click aquí</span>
+
+                                                <div *ngIf="fileExtension=='pdf'" class="document_upload" (click)="selectedFile($event)">
+                                                    <span style="color:rgb(221, 0, 0);">
+                                                        <i class="fas fa-5x fa-file-pdf"></i>
+                                                    </span>
+                                                    <br>
+                                                    <span style="font-size: 0.9em; color:grey;">
+                                                        {{file.name}}
+                                                    </span>
+                                                    <br>
+                                                    <button class="mt-1" [disabled]="!btn" (click)="eliminarFile($event)">Eliminar</button>
+                                                </div>
+
+                                                <div *ngIf="fileExtension=='doc' || fileExtension=='docx'" class="document_upload" (click)="selectedFile($event)">
+                                                    <span style="color:rgb(28, 96, 224);">
+                                                        <i class="fas fa-5x fa-file-word"></i>
+                                                    </span>
+                                                    <br>
+                                                    <span style="font-size: 0.9em; color:grey;">
+                                                        {{file.name}}
+                                                    </span>
+                                                    <br>
+                                                    <button class="mt-1" [disabled]="!btn" (click)="eliminarFile($event)">Eliminar</button>
+                                                </div>
+                                                
+                                            
+                                            </label>
+                                            <input type="file" class="custom-file-input d-none" accept=".pdf,.doc,.docx" (change)="seleccionFile($event)" id="customFile" [disabled]="!btn" #inputFILE>
+                                        </div>
+                                    </div>
+
+                               
+                                    
+                                    <div class="w-100"></div>
+
+                                    <div *ngIf="codigo!=null" class="form-group col-12 mt-1 text-center">
+                                        <span class="badge badge-pill badge-success pl-4 pr-4"><h5>Expediente NRO: {{codigo}}</h5></span>
+                                    </div>
+
+                                    <div class="w-100"></div>
+
+                                    <div class="form-group col-md-5 col-sm-6 col-8 mt-1 text-center">
+                                        <button *ngIf="btn" type="submit" class="btn btn-block btn-primary" [disabled]="!tramiteForm.form.valid" data-toggle="modal" data-target="#modal-confirm">Enviar <i class="fas fa-file-import"></i></button>
+                                        <button *ngIf="!btn" type="button" class="btn btn-block btn-primary" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando</button>
+                                    </div>
+                                  
+                                    
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+                
+               
+            </div>
+        </div>
+
+    </div>
+    <br>
+</div>
+
+
+<!-- Modal Confirm-->
+<div class="modal fade" id="modal-confirm" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Confirmar acción</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro que desea enviar su trámite?
+            </div>
+            <div class="modal-footer p-1">
+                <div class="row w-100">
+                    <div class="col-sm-6">
+                        <button *ngIf="btn" type="button" class="btn btn-block btn-success m-1" (click)='submit(tramiteForm)'>Si</button>
+                        <button *ngIf="!btn" type="button" class="btn btn-block btn-success m-1" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-block btn-secondary m-1" (click)="closeConfirm()" [disabled]="!btn">No</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>

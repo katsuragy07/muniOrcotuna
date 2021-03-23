@@ -1,0 +1,276 @@
+
+section{
+    padding-top: 30px;
+    padding-bottom: 7px;
+    background: rgb(255, 255, 255);
+}
+
+
+
+.align-v{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.align-h{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.align-c{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.icon-cont{
+    transition: all 0.1s ease 0s;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.icon-cont:hover{
+    transform: scale(1.01);
+    transform-origin: left center;
+}
+.icon{
+    border-radius: 100%;
+    overflow: hidden;
+}
+.icon-text{
+    font-weight: 500;
+    font-style: italic;
+}
+.icon-shadow{
+    box-shadow: 0px 0px 3px black;
+}
+
+
+
+.numeros-cel{
+    padding: 9px 10px;
+    border-radius: 12px;
+    background: rgb(226, 0, 0);
+    color: white;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-align: center;
+}
+
+.card-noticia{
+    display: block;
+    position: relative;
+    width: 100%;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s ease 0s;
+    background: white;
+}
+.card-noticia:hover{
+    transform: scale(1.01);
+}
+.ver-mas{
+    display: block;
+    width: fit-content;
+    border-radius: 4px;
+    padding: 5px 27px;
+    text-align: center;
+    background: rgb(240,158,57);
+    background: linear-gradient(0deg, rgba(240,158,57,1) 0%, rgba(246,128,38,1) 50%, rgba(247,176,105,1) 100%);
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+    font-family: arial;
+    text-decoration: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.text-limit-h{
+    font-size: 1.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: arial;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.text-limit-p{
+    font-size: 0.9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 7; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+
+
+
+
+
+.section-menu{
+    display: block;
+    width: 100%;
+    height: 120px;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid rgba(204, 204, 204, 0.6);
+    transition: all 0.4s ease 0s;
+    color: rgb(3, 8, 78);
+}
+.section-menu:hover{
+    background: rgb(32, 116, 32);
+    transform: scale(1.02);
+    text-decoration: none;
+    border-radius: 4px;
+    color: white;
+}
+.section-menu > span{
+    text-align: center;
+    display: block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.section-menu > span p{
+    margin-top: 5px;
+    line-height: 1.1em;
+}
+
+
+
+.section-noticias > div{
+    padding: 12px 12px;
+    padding-bottom: 18px;
+    background: rgb(253, 93, 0);
+}
+.section-noticias > div span{
+    color: rgb(235, 245, 235);
+    font-style: italic;
+}
+.section-noticias > div h5{
+    color: white;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 18px;
+}
+.section-noticias > div a{
+    color: black;
+    padding: 4px 30px;
+    background: rgb(0, 0, 0) !important;
+    border: 1px solid rgb(255, 209, 148);
+    color: white;
+    font-weight: 600;
+}
+.section-noticias > div a:hover{
+    background: rgb(0, 152, 190) !important;
+    transform: scale(1.03);
+}
+
+
+.swiper-container-section-2{
+    height: 94%;
+}
+.section-anuncios{
+    text-align: center;
+    height: 400px !important; 
+    overflow: hidden;
+    cursor: pointer;
+}
+.section-anuncios img{
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+.alcalde-img img{
+    border-radius: 8px;
+    box-shadow: 0px 0px 6px black;
+}
+
+.alcalde-des .alert{
+    padding: 0px;
+
+}
+
+
+.alcalde-des .alert div{
+    text-align: justify;
+    font-size: 1.5em;
+    font-weight: 600;
+    font-family: inherit;
+    padding: 16px 20px;
+    color: white !important;
+    text-shadow: 1px 1px 2px black;
+}
+
+
+.art-fecha{
+    position: relative;
+    margin-top: -32px;
+    margin-bottom: 12px;
+    font-size: 0.8em !important;
+    background: white;
+    padding: 3px 10px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 4px black;
+}
+
+
+@media (max-width: 760px){
+    .nav-section{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .nav-section > .container{
+        max-width: 100% !important;
+    }
+
+    .contenido-section{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .contenido-section > .container{
+        max-width: 100% !important;
+    }
+
+  
+}
+
+
+
+.titulos{
+    color: rgb(124, 46, 0);
+    padding-left: 10px;
+    font-weight: 700;
+    border-left: 7px solid rgb(255, 174, 108);
+    border-bottom: 2px solid rgba(252, 127, 44, 0.9);
+}
+
+
+
+
+
+.alcalde-nom{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    padding: 8px 5px; 
+    text-align: center;
+    background: #2B52B1;
+    color: white;
+    font-weight: 600;
+    width: 101%;
+}

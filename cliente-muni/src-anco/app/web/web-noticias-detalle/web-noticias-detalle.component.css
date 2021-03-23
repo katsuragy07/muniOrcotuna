@@ -1,0 +1,21 @@
+
+
+.container-fluid{
+    background: rgb(238, 238, 238);
+}
+
+.container{
+    background: white;
+}
+
+
+@media (max-width: 760px){
+    .inicio{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .inicio > .container{
+        max-width: 100% !important;
+    }
+}

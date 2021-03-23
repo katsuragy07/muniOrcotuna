@@ -1,0 +1,110 @@
+nav{
+    display: block;
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    background: rgb(240,158,57);
+    background: linear-gradient(0deg, rgba(240,158,57,1) 0%, rgba(246,128,38,1) 50%, rgba(247,176,105,1) 100%);
+}
+
+
+nav .nav-menu{
+    cursor: pointer;
+    text-decoration: none;
+    padding: 15px 10px;
+    color: white;
+    text-shadow: 0px 0px 3px black;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+
+nav .nav-menu:hover{
+    box-shadow: none;
+    border-bottom: 4px solid rgb(18, 80, 194);
+    margin-bottom: -4px;
+}
+
+
+.menu-desktop{
+    display: block;
+    font-weight: 600;
+    font-size: 1em;
+}
+.menu-mobil{
+    display: none;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.menu-mobil-main{
+    display: block;
+    position: relative;
+    cursor: pointer;
+    background: rgb(240,158,57);
+    background: linear-gradient(0deg, rgba(240,158,57,1) 0%, rgba(246,128,38,1) 50%, rgba(247,176,105,1) 100%);
+    padding: 14px 10px;
+    font-size: 1.2em;
+    color: white;
+    text-align: center;
+}
+.menu-mobil-main .col-12 span{
+    position: absolute;
+    display: block;
+    font-weight: 900;
+}
+
+.menu-mobil-items{
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+.menu-mobil-items .col-12{
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+    background: rgb(240,158,57);
+    color: white;
+    font-weight: 500;
+    padding: 8px 24px;
+}
+.menu-mobil-items .col-12:nth-child(1){
+    border-top: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.menu-mobil-items .col-12:hover{
+    background: rgba(246,128,38,1);
+}
+
+
+
+@media (max-width: 992px){
+    nav .nav-menu{
+        font-size: 0.8em;
+    }
+}
+
+
+@media (max-width: 840px){
+    nav .nav-menu span{
+        display: none;
+    }
+}
+
+@media (max-width: 770px){
+    .menu-desktop{
+        display: none;
+    }
+    .menu-mobil{
+        display: block;
+    }
+}
+
+
+@media (max-width: 650px){
+    .menu-mobil-main{
+        font-size: 0.8em;
+    }
+}
+

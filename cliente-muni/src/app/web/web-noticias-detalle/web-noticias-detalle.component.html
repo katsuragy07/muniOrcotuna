@@ -1,0 +1,47 @@
+<app-web-nav></app-web-nav>
+
+<div class="container-fluid inicio">
+    <div class="container">
+
+        <div class="row" style="position: relative;">
+            <div class="col-12 bg-normas-img">
+
+            </div>
+            <div class="col-12 bg-normas-title">
+                <h3><i class="fas fa-book"></i> Noticias</h3>
+                <br>
+                <p>Mantente informado con los últimos sucesos.</p>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row pb-3">
+            <ng-container *ngIf="ready">
+                <div class="col-12 pt-2" *ngFor="let data of noticia; let i = index">
+                    <span class="text-muted" style="font-size: 0.9em;">Publicado el: {{data.fecha}}</span>
+                    <h4 class="mt-1 mb-3 text-uppercase">{{data.titulo}}</h4>
+                    <img class="alcalde-img" [src]="URI+'upload/noticias/'+data.url_img" width="100%">
+                    <p class="mt-3">
+                        {{data.descripcion}}
+                    </p>
+                </div>
+            </ng-container>     
+            <ng-container *ngIf="!ready">
+                <div class="col-12">
+                    <div class="w-100 mt-4 mb-4">
+                        <div class="text-center">
+                            <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                            </div>
+                            <br>
+                            Cargando
+                        </div>
+                    </div>   
+                </div>
+            </ng-container>
+        </div>
+
+    </div>
+    <br>
+</div>

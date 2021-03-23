@@ -1,0 +1,154 @@
+
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a routerLink="/panel" class="brand-link">
+      <img src="../../../assets/logo2.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">MDO Administración</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img *ngIf="getUsuario.usuario.res.url_img" [src]="URI+'upload/usuarios/'+this.getUsuario.usuario.res.url_img" class="img-circle elevation-2" alt="User Image">
+          <img *ngIf="!getUsuario.usuario.res.url_img" src="assets/panel/user.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a class="d-block">
+            <span style="color:#3c763d;font-size:10px;margin-right:3px;"><i class="fas fa-circle"></i></span>
+            {{this.getUsuario.usuario.res.nombre}}
+          </a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open">
+            <a  class="nav-link active">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Herramientas
+              </p>
+            </a>
+ 
+          </li>
+
+          
+          <li class="nav-item" *ngIf="getUsuario.usuario.res.privilegios=='ADMINISTRADOR'">
+            <a routerLink="usuarios" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Usuarios
+              </p>
+            </a>    
+          </li>
+
+          <li class="nav-item" *ngIf="getUsuario.usuario.res.privilegios=='ADMINISTRADOR'">
+            <a routerLink="areas" class="nav-link">
+              <i class="nav-icon fas fa-id-card-alt"></i>
+              <p>
+                Áreas
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a  class="nav-link" style="cursor: pointer;" (click)="openTramiteMenu()">
+              <i class="nav-icon fas fa-file-signature"></i>
+              <p>
+                Trámites
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" id="treeTramite" style="padding-left: 15px;">
+              <li class="nav-item">
+                <a routerLink="tramites/pendientes" class="nav-link">
+                  <i class="fas fa-envelope nav-icon"></i> 
+                  <p>Pendientes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="tramites/finalizados" class="nav-link">
+                  <i class="fas fa-envelope-open nav-icon"></i> 
+                  <p>Finalizados</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="tramites/rechazados" class="nav-link">
+                  <i class="fas fa-backspace nav-icon"></i> 
+                  <p>Rechazados</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+      
+          <li class="nav-header" *ngIf="getUsuario.usuario.res.accesos.general || getUsuario.usuario.res.accesos.portadas || getUsuario.usuario.res.accesos.noticias || getUsuario.usuario.res.accesos.anuncios || getUsuario.usuario.res.accesos.resoluciones || getUsuario.usuario.res.accesos.convocatorias">PÁGINA WEB</li>
+
+          <li class="nav-item" *ngIf="getUsuario.usuario.res.accesos.general">
+            <a routerLink="general" class="nav-link">
+              <i class="nav-icon fas fa-university"></i>
+              <p>
+                General
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item" *ngIf="getUsuario.usuario.res.accesos.portadas">
+            <a routerLink="portada" class="nav-link">
+              <i class="nav-icon fas fa-images"></i>
+              <p>
+                Portada
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item" *ngIf="getUsuario.usuario.res.accesos.noticias">
+            <a routerLink="noticias" class="nav-link">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                Noticias
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item" *ngIf="getUsuario.usuario.res.accesos.anuncios">
+            <a routerLink="anuncios" class="nav-link">
+              <i class="nav-icon fas fa-bullhorn"></i>
+              <p>
+                Anuncios
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item" *ngIf="getUsuario.usuario.res.accesos.resoluciones">
+            <a routerLink="resoluciones" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Resoluciones
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item" *ngIf="getUsuario.usuario.res.accesos.convocatorias">
+            <a routerLink="convocatorias" class="nav-link">
+              <i class="nav-icon fas fa-briefcase"></i>
+              <p>
+                Convocatorias
+              </p>
+            </a>
+          </li>
+
+      
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
