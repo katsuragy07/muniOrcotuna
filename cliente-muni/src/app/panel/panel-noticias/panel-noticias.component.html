@@ -125,7 +125,7 @@
 <!-- MODAL ADD -->
 <!-- MODAL ADD -->
 <div class="modal fade bd-example-modal-sm" id="modal-add" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
 
 
@@ -149,23 +149,23 @@
                                         <div class="tab-content row justify-content-center col-12" id="nav-tabContent">
 
 
-                                            <div class="col-md-9 col-12 tab-pane fade show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
+                                            <div class="col-md-12 col-12 tab-pane fade show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
                                                 <br>
                                                 <div class="row justify-content-center">
                                                     <div class="col-12 text-center">
-                                                        <div class="modal_foto_imagen" (click)="inputIMG.click()">
+                                                        <div class="modal_foto_imagen mb-1" (click)="inputIMG.click()">
                                                             <input type="file" id="input-file-modal" class="d-none" (change)="seleccionFoto($event)" [disabled]="!btn" #inputIMG> 
                                                             <img [src]="photoSelected || 'assets/panel/gallery.png'" width="100%">
                                                         </div> 
-
+                                                        <div class="text-muted">Imagen Destacada</div>
                                                     </div>
                                                 </div>
 
                                                 <br>
                                                
                                                 <div class="form-group row">
-                                                    <label for="inputTIT" class="col-sm-3 col-form-label">Titular*</label>
-                                                    <div class="col-sm-9">
+                                                    <label for="inputTIT" class="col-sm-2 col-3 col-form-label text-left">Titular*</label>
+                                                    <div class="col-sm-10 col-9">
                                                         <input type="text" class="form-control" [ngClass]="{'is-invalid': titulo.invalid && (titulo.dirty || titulo.touched)}" placeholder="Título de la noticia" [disabled]="!btn" [(ngModel)]="noticia.titulo" name="titulo" #titulo="ngModel" required>
                                                         
                                                         
@@ -195,12 +195,15 @@
                                                 -->
                                                
                                                 <div class="form-group row">
-                                                    <label for="inputDES" class="col-sm-3 col-form-label">Descripción</label>
-                                                    <div class="col-sm-9">
-                                                        <textarea type="text" class="form-control" placeholder="Contenido de la noticia" rows="5" [disabled]="!btn" [(ngModel)]="noticia.descripcion" name="descripcion" #descripcion></textarea>
+                                                    <label for="inputDES" class="col-sm-12 col-form-label text-left">Descripción</label>
+                                                    <div class="col-sm-12 mt-2">
+                                                        <angular-editor class="e2e-trusted-url" [config]="editorConfig" [placeholder]="'Contenido de la noticia...'"  [disabled]="!btn" [(ngModel)]="noticia.descripcion" name="descripcion" #descripcion></angular-editor>
+                                                        <!--<textarea type="text" class="form-control" placeholder="Contenido de la noticia" rows="5" [disabled]="!btn" [(ngModel)]="noticia.descripcion" name="descripcion" #descripcion></textarea>-->
                                                     </div>
+                                                    <div id="cc2"></div>
                                                 </div>
                                                
+                                             
                                                 
 
                                             </div>

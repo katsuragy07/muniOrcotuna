@@ -8,6 +8,7 @@
     $editURL = $_POST['editURLimg'];
     $nombres = $_POST['inputNOM'];
 
+    $nombres = str_replace("'","\'",$nombres);
     
     function saltoLinea($str) { 
         return str_replace(array("\r\n", "\r", "\n"), "<br />", $str); 

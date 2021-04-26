@@ -39,7 +39,8 @@
                                     <div class="media-body pr-3 pl-3 pt-2 pb-2">
                                         <span class="text-muted" style="font-size: 0.8em;">Publicado el: {{data.fecha}}</span>
                                         <h5 class="mt-0 mb-1 text-limit-h text-uppercase">{{data.titulo}}</h5>
-                                        <p class="text-justify text-limit-p">{{data.descripcion}}</p>
+                                        <!--<p class="text-justify text-limit-p">{{data.descripcion}}</p>-->
+                                        <div class="mt-3 text-limit-p" [innerHTML]="data.descripcion"></div>
                                     </div>
                                 </div>
                             </div>  

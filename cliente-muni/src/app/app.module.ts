@@ -57,6 +57,9 @@ import { WebFuncionariosComponent } from './web/web-funcionarios/web-funcionario
 import { PanelResolucionesComponent } from './panel/panel-resoluciones/panel-resoluciones.component';
 import { PanelGeneralComponent } from './panel/panel-general/panel-general.component';
 
+
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,6 +114,7 @@ import { PanelGeneralComponent } from './panel/panel-general/panel-general.compo
     ToastrModule.forRoot({
       timeOut: 1500
     }),
+    AngularEditorModule
   ],
   providers: [
     AuthGuard
@@ -118,3 +122,4 @@ import { PanelGeneralComponent } from './panel/panel-general/panel-general.compo
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

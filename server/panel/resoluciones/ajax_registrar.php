@@ -9,7 +9,8 @@
     $nombres = $_POST['inputNOM'];
     $tipo = $_POST['inputTIP'];
 
-    
+    $nombres = str_replace("'","\'",$nombres);
+
     function saltoLinea($str) { 
         return str_replace(array("\r\n", "\r", "\n"), "<br />", $str); 
     }  

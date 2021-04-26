@@ -13,6 +13,8 @@
     $telefono = $_POST['telefono'];
 
 
+    $correo = str_replace("'","\'",$correo);
+
     $url_img = $_POST['url_img'];
     $file = URI.'upload/general/'.$url_img;
 

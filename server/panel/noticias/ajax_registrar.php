@@ -9,12 +9,14 @@
     $titulo = $_POST['inputTIT'];
     $des = $_POST['inputDES'];
 
+    $titulo = str_replace("'","\'",$titulo);
+    $des = str_replace("'","`",$des);
     
     function saltoLinea($str) { 
         return str_replace(array("\r\n", "\r", "\n"), "<br />", $str); 
     }  
     //Modo de uso 
-    $des = saltoLinea($des);
+    //$des = saltoLinea($des);
     
     
     $resultadoUP = false;
@@ -41,11 +43,11 @@
         }
         
         if($resultadoUP){
-            $query = "INSERT INTO noticias(titulo,descripcion,fecha,url_img) VALUES ('$titulo','$des',now(),'$uploadedFile');";   
+            $query = "INSERT INTO noticias(titulo,descripcion,fecha,url_img) VALUES ('$titulo',`$des`,now(),'$uploadedFile');";   
         }
         
     }else{
-        $query = "INSERT INTO noticias(titulo,descripcion,fecha) VALUES ('$titulo','$des',now());"; 
+        $query = "INSERT INTO noticias(titulo,descripcion,fecha) VALUES ('$titulo',`$des`,now());"; 
         $resultadoUP = true;
     }
 

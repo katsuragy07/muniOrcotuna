@@ -6,6 +6,8 @@ import { Noticia } from 'src/app/models/noticia.model';
 import { NgForm } from '@angular/forms';
 import { GlobalConstants } from './../../common/global-constans';
 
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+
 import * as $ from 'jquery';
 declare var $ : any;
 
@@ -35,6 +37,17 @@ export class PanelNoticiasComponent implements OnInit {
   pageActive: number;
   pageSize: number;
 
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+      spellcheck: true,
+      height: 'auto',
+      minHeight: '280px',
+      maxHeight: 'auto',
+      width: 'auto',
+      minWidth: '0',
+      translate: 'yes',
+  };
+
   constructor(private service: PanelNoticiasService, private toastr: ToastrService) { 
     this.ready = false;
     this.noticia = new Noticia();
@@ -42,9 +55,12 @@ export class PanelNoticiasComponent implements OnInit {
     this.pageActive = 1;
     this.pageSize = 20;
     this.paginar();
+
+    
   }
 
-  ngOnInit() {
+  ngOnInit(){
+ 
   }
 
   resetForm(getForm){
@@ -53,6 +69,11 @@ export class PanelNoticiasComponent implements OnInit {
     this.photoSelected = null;
     this.file = null;
     $("#input-file-modal").val('');
+
+    $("#insertVideo-").html(`<i class="fas fa-video"></i>`);
+    $("#unlink-").html(`<i class="fas fa-unlink"></i>`);
+    $("#clearFormatting-").html(`<i class="fas fa-broom"></i>`);
+    $(".angular-editor-button[title='Redo']").html(`<i class="fas fa-redo"></i>`);
   }
 
   closeForm(getForm){
@@ -62,6 +83,11 @@ export class PanelNoticiasComponent implements OnInit {
     this.photoSelected = null;
     this.file = null;
     $("#input-file-modal").val('');
+
+    $("#insertVideo-").html(`<i class="fas fa-video"></i>`);
+    $("#unlink-").html(`<i class="fas fa-unlink"></i>`);
+    $("#clearFormatting-").html(`<i class="fas fa-broom"></i>`);
+    $(".angular-editor-button[title='Redo']").html(`<i class="fas fa-redo"></i>`);
   }
 
   closeConfirm(){
@@ -151,6 +177,7 @@ export class PanelNoticiasComponent implements OnInit {
         this.btn = false;
         this.service.putData(this.noticia, this.file).subscribe(
           (res) => {
+            //console.log(res);
             this.btn = true;
             this.toastr.success('Elemento actualizado con exito.','Aviso');
             this.paginar();
@@ -215,6 +242,10 @@ export class PanelNoticiasComponent implements OnInit {
 
 
   edit(getElement: Noticia){
+    $("#insertVideo-").html(`<i class="fas fa-video"></i>`);
+    $("#unlink-").html(`<i class="fas fa-unlink"></i>`);
+    $("#clearFormatting-").html(`<i class="fas fa-broom"></i>`);
+    $(".angular-editor-button[title='Redo']").html(`<i class="fas fa-redo"></i>`);
     this.noticia = Object.assign({},getElement);
     this.photoSelected = this.URI+"upload/noticias/"+this.noticia.url_img;   
   }

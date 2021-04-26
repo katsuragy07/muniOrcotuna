@@ -13,10 +13,13 @@
     $url_img = $_POST['url_img'];
     $file = URI.'upload/noticias/'.$url_img;
 
+    $titulo = str_replace("'","\'",$titulo);
+    $des = str_replace("'","\'",$des);
+
     function saltoLinea($str) { 
         return str_replace(array("\r\n", "\r", "\n"), "<br />", $str); 
     }  
-    $des = saltoLinea($des);
+    //$des = saltoLinea($des);
 
     $resultadoUP = false;
     $resultadoBD = false;

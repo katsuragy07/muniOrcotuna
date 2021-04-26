@@ -13,6 +13,8 @@
     $url_archivo = $_POST['url_archivo'];
     $file = URI.'upload/resoluciones/'.$url_archivo;
 
+    $nombres = str_replace("'","\'",$nombres);
+    
     function saltoLinea($str) { 
         return str_replace(array("\r\n", "\r", "\n"), "<br />", $str); 
     }  

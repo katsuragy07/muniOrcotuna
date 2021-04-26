@@ -193,7 +193,8 @@
                                         Publicado el: {{data.fecha}}
                                     </div>
                                     <h5 class="text-limit-h">{{data.titulo}}</h5>
-                                    <p class="text-limit-p mt-2">{{data.descripcion}}</p>
+                                    <!--<p class="text-limit-p mt-2">{{data.descripcion}}</p>-->
+                                    <div class="text-limit-p mt-2" [innerHTML]="data.descripcion"></div>
                                 </div>
                             </a>
                         </div>
@@ -207,7 +208,8 @@
                                         Publicado el: {{data.fecha}}
                                     </div>
                                     <h5 class="text-limit-h">{{data.titulo}}</h5>
-                                    <p class="text-limit-p mt-2">{{data.descripcion}}</p>
+                                     <!--<p class="text-limit-p mt-2">{{data.descripcion}}</p>-->
+                                     <div class="text-limit-p mt-2" [innerHTML]="data.descripcion"></div>
                                 </div>
                             </a>
                         </div>

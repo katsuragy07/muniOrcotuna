@@ -6,6 +6,7 @@ import { Noticia } from 'src/app/models/noticia.model';
 
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-web-noticias-detalle',
   templateUrl: './web-noticias-detalle.component.html',
@@ -20,6 +21,7 @@ export class WebNoticiasDetalleComponent implements OnInit {
   btn: Boolean;
   ready: Boolean;
  
+
 
   constructor(private service: WebNoticiasDetalleService, private route: ActivatedRoute) { 
     this.noticia = []; 

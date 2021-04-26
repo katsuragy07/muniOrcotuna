@@ -34,7 +34,7 @@ while($row = $result->fetch_array()){
         'id' => $row['idnoticia'],
         'fecha' => date('d-m-Y h:i A',strtotime($row['fecha'])),
         'titulo' => $row['titulo'],
-        'descripcion' => br2nl($row['descripcion']),
+        'descripcion' => $row['descripcion'],
         'url_img' => $row['url_img']
     );   
    
